@@ -21,16 +21,16 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Folio:</strong>
+                            <strong>N° Folio:</strong>
                             {{ $factura->folio }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Proveedor:</strong>
-                            {{ $factura->id_proveedor }}
+                            <strong>Proveedor:</strong>
+                            {{ $factura->proveedore->nombre_proveedor }}
                         </div>
                         <div class="form-group">
-                            <strong>Estado Fact:</strong>
-                            {{ $factura->estado_fact }}
+                            <strong>Estado Factura:</strong>
+                            {{ $factura->estadofact->estado }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha Emision:</strong>

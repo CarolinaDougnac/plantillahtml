@@ -32,6 +32,7 @@ Route::resource('productos', App\Http\Controllers\ProductoController::class)->mi
 Route::resource('productofacturas', App\Http\Controllers\ProductofacturaController::class)->middleware('auth');
 Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class)->middleware('auth');
 Route::resource('tiendas', App\Http\Controllers\TiendaController::class)->middleware('auth');
+Route::resource('compras', App\Http\Controllers\CompraController::class)->middleware('auth');
 
 Auth::routes();
 

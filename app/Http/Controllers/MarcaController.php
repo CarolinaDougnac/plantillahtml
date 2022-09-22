@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Marca;
+use App\Models\Proveedore;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +33,8 @@ class MarcaController extends Controller
     public function create()
     {
         $marca = new Marca();
-        return view('marca.create', compact('marca'));
+        $proveedor = Proveedore::pluck('nombre_proveedor','id');
+        return view('marca.create', compact('marca','proveedor'));
     }
 
     /**
@@ -73,8 +75,9 @@ class MarcaController extends Controller
     public function edit($id)
     {
         $marca = Marca::find($id);
-
-        return view('marca.edit', compact('marca'));
+        $proveedor = Proveedore::pluck('nombre_proveedor','id');
+        
+        return view('marca.edit', compact('marca','proveedor'));
     }
 
     /**

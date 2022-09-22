@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Factura;
+use App\Models\Proveedore;
+use App\Models\Estadofact;
+
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +35,10 @@ class FacturaController extends Controller
     public function create()
     {
         $factura = new Factura();
-        return view('factura.create', compact('factura'));
+        $proveedor = Proveedore::pluck('nombre_proveedor','id');
+        $estadofact = Estadofact::pluck('estado','id');
+
+        return view('factura.create', compact('factura','proveedor','estadofact'));
     }
 
     /**
@@ -73,8 +79,10 @@ class FacturaController extends Controller
     public function edit($id)
     {
         $factura = Factura::find($id);
+        $proveedor = Proveedore::pluck('nombre_proveedor','id');
+        $estadofact = Estadofact::pluck('estado','id');
 
-        return view('factura.edit', compact('factura'));
+        return view('factura.edit', compact('factura','proveedor','estadofact'));
     }
 
     /**

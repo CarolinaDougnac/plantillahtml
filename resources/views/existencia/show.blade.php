@@ -22,23 +22,23 @@
                         
                         <div class="form-group">
                             <strong>Id Producto:</strong>
-                            {{ $existencia->id_producto }}
+                            {{ $existencia->producto->nombre }}
                         </div>
                         <div class="form-group">
                             <strong>Cantidad:</strong>
                             {{ $existencia->cantidad }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Estado:</strong>
-                            {{ $existencia->id_estado }}
+                            <strong>Estado:</strong>
+                            {{ $existencia->estadoprod->estado }}
                         </div>
                         <div class="form-group">
                             <strong>Vencimiento:</strong>
                             {{ $existencia->vencimiento }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Factura:</strong>
-                            {{ $existencia->id_factura }}
+                            <strong>Folio Factura:</strong>
+                            {{ $existencia->factura->folio }}
                         </div>
                         <div class="form-group">
                             <strong>Precio Venta:</strong>

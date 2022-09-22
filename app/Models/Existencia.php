@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $updated_at
  * @property $created_at
  *
- * @property Estadoprod $estadoprod
+ * @property EstadoProd $estadoProd
  * @property Factura $factura
  * @property Producto $producto
  * @package App
@@ -49,9 +49,9 @@ class Existencia extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function estadoprod()
+    public function estadoProd()
     {
-        return $this->hasOne('App\Models\Estadoprod', 'id', 'id_estado');
+        return $this->hasOne('App\Models\EstadoProd', 'id', 'id_estado');
     }
     
     /**

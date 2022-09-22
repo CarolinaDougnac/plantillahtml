@@ -25,8 +25,8 @@
                             {{ $marca->nombre_marca }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Proveedor:</strong>
-                            {{ $marca->id_proveedor }}
+                            <strong>Proveedor:</strong>
+                            {{ $marca->proveedore->nombre_proveedor }}
                         </div>
 
                     </div>

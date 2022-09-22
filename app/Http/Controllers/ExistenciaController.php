@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Existencia;
+use App\Models\Producto;
+use App\Models\Estadoprod;
+use App\Models\Factura;
+
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +36,12 @@ class ExistenciaController extends Controller
     public function create()
     {
         $existencia = new Existencia();
-        return view('existencia.create', compact('existencia'));
+        $producto = Producto::pluck('nombre','id');
+        $estadoprod = Estadoprod::pluck('estado','id');
+        $factura = Factura::pluck('folio','id');
+
+
+        return view('existencia.create', compact('existencia','producto','estadoprod','factura'));
     }
 
     /**
@@ -73,8 +82,11 @@ class ExistenciaController extends Controller
     public function edit($id)
     {
         $existencia = Existencia::find($id);
+        $producto = Producto::pluck('nombre','id');
+        $estadoprod = Estadoprod::pluck('estado','id');
+        $factura = Factura::pluck('folio','id');
 
-        return view('existencia.edit', compact('existencia'));
+        return view('existencia.edit', compact('existencia','producto','estadoprod','factura'));
     }
 
     /**

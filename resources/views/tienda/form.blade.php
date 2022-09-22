@@ -1,4 +1,5 @@
 <div class="box box-info padding-1">
+
     <div class="box-body">
         
         <div class="form-group">
@@ -7,18 +8,18 @@
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('id_mueble') }}
-            {{ Form::text('id_mueble', $tienda->id_mueble, ['class' => 'form-control' . ($errors->has('id_mueble') ? ' is-invalid' : ''), 'placeholder' => 'Id Mueble']) }}
+            {{ Form::label('Mueble') }}
+            {{ Form::select('id_mueble', $muebles, $tienda->id_mueble, ['class' => 'form-control' . ($errors->has('id_mueble') ? ' is-invalid' : ''), 'placeholder' => 'Mueble']) }}
             {!! $errors->first('id_mueble', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('id_nivel') }}
-            {{ Form::text('id_nivel', $tienda->id_nivel, ['class' => 'form-control' . ($errors->has('id_nivel') ? ' is-invalid' : ''), 'placeholder' => 'Id Nivel']) }}
+            {{ Form::label('Nivel') }}
+            {{ Form::select('id_nivel', $niveles, $tienda->id_nivel, ['class' => 'form-control' . ($errors->has('id_nivel') ? ' is-invalid' : ''), 'placeholder' => 'Nivel']) }}
             {!! $errors->first('id_nivel', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('id_posicion') }}
-            {{ Form::text('id_posicion', $tienda->id_posicion, ['class' => 'form-control' . ($errors->has('id_posicion') ? ' is-invalid' : ''), 'placeholder' => 'Id Posicion']) }}
+            {{ Form::label('Posicion') }}
+            {{ Form::select('id_posicion', $posiciones, $tienda->id_posicion, ['class' => 'form-control' . ($errors->has('id_posicion') ? ' is-invalid' : ''), 'placeholder' => 'Posicion']) }}
             {!! $errors->first('id_posicion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

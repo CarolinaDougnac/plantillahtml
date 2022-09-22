@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Factura') }}
+                                {{ __('Facturas') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('facturas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear Nuevo') }}
                                 </a>
                               </div>
                         </div>
@@ -36,9 +36,9 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Folio</th>
-										<th>Id Proveedor</th>
-										<th>Estado Fact</th>
+										<th>N° Folio</th>
+										<th>Proveedor</th>
+										<th>Estado de la Factactura</th>
 										<th>Fecha Emision</th>
 										<th>Fecha Reception</th>
 
@@ -51,18 +51,18 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $factura->folio }}</td>
-											<td>{{ $factura->id_proveedor }}</td>
-											<td>{{ $factura->estado_fact }}</td>
+											<td>{{ $factura->proveedore->nombre_proveedor }}</td>
+											<td>{{ $factura->estadofact->estado}}</td>
 											<td>{{ $factura->fecha_emision }}</td>
 											<td>{{ $factura->fecha_reception }}</td>
 
                                             <td>
                                                 <form action="{{ route('facturas.destroy',$factura->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('facturas.show',$factura->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('facturas.edit',$factura->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('facturas.show',$factura->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('facturas.edit',$factura->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>

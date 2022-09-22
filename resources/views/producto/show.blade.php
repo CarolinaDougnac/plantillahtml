@@ -29,16 +29,16 @@
                             {{ $producto->cod_barra }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Marca:</strong>
-                            {{ $producto->id_marca }}
+                            <strong>Marca:</strong>
+                            {{ $producto->marca->nombre_marca }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Tienda:</strong>
-                            {{ $producto->id_tienda }}
+                            <strong>Tienda:</strong>
+                            {{ $producto->tienda->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Bodega:</strong>
-                            {{ $producto->id_bodega }}
+                            <strong>Bodega:</strong>
+                            {{ $producto->bodega->nombre_bodega }}
                         </div>
 
                     </div>

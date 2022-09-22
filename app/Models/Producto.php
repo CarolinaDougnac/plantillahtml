@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Bodega $bodega
  * @property Existencia[] $existencias
  * @property Marca $marca
- * @property Productofactura[] $productofacturas
+ * @property ProductoFactura[] $productoFacturas
  * @property Tienda $tienda
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -70,9 +70,9 @@ class Producto extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function productofacturas()
+    public function productoFacturas()
     {
-        return $this->hasMany('App\Models\Productofactura', 'ProductoBasico_id_productoBasico', 'id');
+        return $this->hasMany('App\Models\ProductoFactura', 'ProductoBasico_id_productoBasico', 'id');
     }
     
     /**

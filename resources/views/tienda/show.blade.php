@@ -25,16 +25,16 @@
                             {{ $tienda->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Mueble:</strong>
-                            {{ $tienda->id_mueble }}
+                            <strong>Mueble:</strong>
+                            {{ $tienda->mueble->nombre_mueble }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Nivel:</strong>
-                            {{ $tienda->id_nivel }}
+                            <strong>Nivel:</strong>
+                            {{ $tienda->nivele->nivel }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Posicion:</strong>
-                            {{ $tienda->id_posicion }}
+                            <strong>Posicion:</strong>
+                            {{ $tienda->posicione->posicion }}
                         </div>
 
                     </div>

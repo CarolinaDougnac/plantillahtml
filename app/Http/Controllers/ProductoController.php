@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Marca;
+use App\Models\Tienda;
+use App\Models\Bodega;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\DB;
 
 /**
  * Class ProductoController
@@ -16,10 +20,14 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productos = Producto::paginate();
-
+        $busqueda = $request->busqueda;
+        $productos = Producto::where('nombre','like','%'.$busqueda.'%')
+                    ->orWhere('cod_barra','like','%'.$busqueda.'%')
+                    ->latest('id')
+                    ->paginate();
+ 
         return view('producto.index', compact('productos'))
             ->with('i', (request()->input('page', 1) - 1) * $productos->perPage());
     }
@@ -32,7 +40,11 @@ class ProductoController extends Controller
     public function create()
     {
         $producto = new Producto();
-        return view('producto.create', compact('producto'));
+        $marcas = Marca::pluck('nombre_marca','id');
+        $tiendas = Tienda::pluck('nombre','id');
+        $bodegas = Bodega::pluck('nombre_bodega','id');
+
+        return view('producto.create', compact('producto','marcas','tiendas','bodegas'));
     }
 
     /**
@@ -60,7 +72,7 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
-
+       
         return view('producto.show', compact('producto'));
     }
 
@@ -73,8 +85,11 @@ class ProductoController extends Controller
     public function edit($id)
     {
         $producto = Producto::find($id);
+        $marcas = Marca::pluck('nombre_marca','id');
+        $tiendas = Tienda::pluck('nombre','id');
+        $bodegas = Bodega::pluck('nombre_bodega','id');
 
-        return view('producto.edit', compact('producto'));
+        return view('producto.edit', compact('producto','marcas','tiendas','bodegas'));
     }
 
     /**

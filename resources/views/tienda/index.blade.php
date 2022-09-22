@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('tiendas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Crear Nuevo') }}
                                 </a>
                               </div>
                         </div>
@@ -37,9 +37,9 @@
                                         <th>No</th>
                                         
 										<th>Nombre</th>
-										<th>Id Mueble</th>
-										<th>Id Nivel</th>
-										<th>Id Posicion</th>
+										<th>Mueble</th>
+										<th>Nivel</th>
+										<th>Posicion</th>
 
                                         <th></th>
                                     </tr>
@@ -50,17 +50,17 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $tienda->nombre }}</td>
-											<td>{{ $tienda->id_mueble }}</td>
-											<td>{{ $tienda->id_nivel }}</td>
-											<td>{{ $tienda->id_posicion }}</td>
+											<td>{{ $tienda->mueble->nombre_mueble }}</td>
+											<td>{{ $tienda->nivele->nivel }}</td>
+											<td>{{ $tienda->posicione->posicion }}</td>
 
                                             <td>
                                                 <form action="{{ route('tiendas.destroy',$tienda->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('tiendas.show',$tienda->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tiendas.edit',$tienda->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('tiendas.show',$tienda->id) }}"><i class="fa fa-fw fa-eye"></i> Mostrar</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('tiendas.edit',$tienda->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>

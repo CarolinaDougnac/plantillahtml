@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tienda;
+use App\Models\Mueble;
+use App\Models\Nivele;
+use App\Models\Posicione;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +35,11 @@ class TiendaController extends Controller
     public function create()
     {
         $tienda = new Tienda();
-        return view('tienda.create', compact('tienda'));
+        $muebles = Mueble::pluck('nombre_mueble','id');
+        $niveles = Nivele::pluck('nivel','id');
+        $posiciones = Posicione::pluck('posicion','id');
+
+        return view('tienda.create', compact('tienda','muebles','niveles','posiciones'));
     }
 
     /**
@@ -73,8 +80,11 @@ class TiendaController extends Controller
     public function edit($id)
     {
         $tienda = Tienda::find($id);
+        $muebles = Mueble::pluck('nombre_mueble','id');
+        $niveles = Nivele::pluck('nivel','id');
+        $posiciones = Posicione::pluck('posicion','id');
 
-        return view('tienda.edit', compact('tienda'));
+        return view('tienda.edit', compact('tienda','muebles','niveles','posiciones'));
     }
 
     /**
