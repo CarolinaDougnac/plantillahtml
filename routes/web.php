@@ -14,5 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.app');
+    return view('home');
 });
+
+
+// mis tablas
+Route::resource('bodegas', App\Http\Controllers\BodegaController::class)->middleware('auth');
+Route::resource('estadofacts', App\Http\Controllers\EstadofactController::class)->middleware('auth');
+Route::resource('estadoprods', App\Http\Controllers\EstadoprodController::class)->middleware('auth');
+Route::resource('existencias', App\Http\Controllers\ExistenciaController::class)->middleware('auth');
+Route::resource('facturas', App\Http\Controllers\FacturaController::class)->middleware('auth');
+Route::resource('marcas', App\Http\Controllers\MarcaController::class)->middleware('auth');
+Route::resource('muebles', App\Http\Controllers\MuebleController::class)->middleware('auth');
+Route::resource('niveles', App\Http\Controllers\NiveleController::class)->middleware('auth');
+Route::resource('posiciones', App\Http\Controllers\PosicioneController::class)->middleware('auth');
+Route::resource('productos', App\Http\Controllers\ProductoController::class)->middleware('auth');
+Route::resource('productofacturas', App\Http\Controllers\ProductofacturaController::class)->middleware('auth');
+Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class)->middleware('auth');
+Route::resource('tiendas', App\Http\Controllers\TiendaController::class)->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
