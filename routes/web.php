@@ -34,6 +34,9 @@ Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class)
 Route::resource('tiendas', App\Http\Controllers\TiendaController::class)->middleware('auth');
 Route::resource('compras', App\Http\Controllers\CompraController::class)->middleware('auth');
 
+Route::resource('ventadiaria', App\Http\Controllers\VentadiariaController::class)->middleware('auth');
+Route::resource('reposicion', App\Http\Controllers\TiendaController::class)->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

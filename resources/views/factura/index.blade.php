@@ -34,14 +34,11 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        
 										<th>N° Folio</th>
 										<th>Proveedor</th>
 										<th>Estado de la Factactura</th>
 										<th>Fecha Emision</th>
 										<th>Fecha Reception</th>
-
                                         <th></th>
                                     </tr>
                                 </thead>

@@ -35,29 +35,31 @@
       <div class="shadow-bottom"></div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-        <li><a class="d-flex align-items-center" href="{{ route('existencias.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Inventario</span></a></li>
-        <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">CRUD de todas las tablas</span><i data-feather="more-horizontal"></i></li>
-          <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Productos</span><span class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
-            <ul class="menu-content">
+
+        <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Recepcion de productos</span><i data-feather="more-horizontal"></i></li>
+          <li><a class="d-flex align-items-center" href="{{ route('compras.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Recepcion</span></a></li>
+          <li><a class="d-flex align-items-center" href="{{ route('compras.edit',4) }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Revicion</span></a></li>
+          <li><a class="d-flex align-items-center" href="{{ route('compras.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Link</span></a></li>
+
+          <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Salida de prosuctos</span><i data-feather="more-horizontal"></i></li>
+          <li><a class="d-flex align-items-center" href="{{ route('ventadiaria.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Venta Diaria</span></a></li>
+
+
+        <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Productos</span><i data-feather="more-horizontal"></i></li>
+
               <li><a class="d-flex align-items-center" href="{{ route('productos.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Productos</span></a></li>
               <li><a class="d-flex align-items-center" href="{{ route('marcas.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Marcas">Marcas</span></a></li>
               <li><a class="d-flex align-items-center" href="{{ route('proveedores.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Proveedores</span></a></li>
               <li><a class="d-flex align-items-center" href="{{ route('bodegas.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Marcas">Bodegas</span></a></li>
               <li><a class="d-flex align-items-center" href="{{ route('estadoprods.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Estado del Producto</span></a></li>
-            </ul>
-          </li>
+          <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Posición en la tienda</span><i data-feather="more-horizontal"></i></li>
 
-          <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Tienda</span><span class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
-            <ul class="menu-content">
-            <li><a class="d-flex align-items-center" href="{{ route('tiendas.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Tienda</span></a></li>
               <li><a class="d-flex align-items-center" href="{{ route('muebles.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Marcas">Muebles</span></a></li>
               <li><a class="d-flex align-items-center" href="{{ route('niveles.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Niveles</span></a></li>
               <li><a class="d-flex align-items-center" href="{{ route('posiciones.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Marcas">Posiciones</span></a></li>
-            </ul>
-          </li>
+          <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Facturas</span><i data-feather="more-horizontal"></i></li>
 
           <li><a class="d-flex align-items-center" href="{{ route('facturas.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Productos">Facturas</span></a></li>
-          <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i></li>
 
         </ul>
       </div>

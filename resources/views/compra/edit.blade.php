@@ -5,8 +5,9 @@
 @endsection
 
 @section('content')
-  <div class="row invoice-add">
-    <!-- Invoice Add Left starts -->
+<section class="invoice-edit-wrapper">
+  <div class="row invoice-edit">
+    <!-- Invoice Edit Left starts -->
     <div class="col-xl-9 col-md-8 col-12">
       <div class="card invoice-preview-card">
         <!-- Header starts -->
@@ -69,34 +70,26 @@
                     </g>
                   </g>
                 </svg>
-                <h3 class="text-primary invoice-logo">Recepcion de Productos</h3>
-              </div>
-              <h6 class="invoice-to-title">Proveedor:</h6>
-              <div class="invoice-customer">
-              <div class="form-group">
-            {{ Form::select('id_proveedor', $proveedor, $factura->id_proveedor, ['class' => 'form-control' . ($errors->has('id_proveedor') ? ' is-invalid' : ''), 'placeholder' => 'Nombre Proveedor']) }}
-            {!! $errors->first('id_proveedor', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-              </div>
-            </div>
+                <h3 class="text-primary invoice-logo">Revisión de Facturas</h3>
+              </div><h3>{{ $factura->proveedore->nombre_proveedor }}</h3></div>
             <div class="invoice-number-date mt-md-0 mt-2">
               <div class="d-flex align-items-center justify-content-md-end mb-1">
-                <h4 class="invoice-title">Invoice</h4>
+                <h4 class="invoice-title">Folio: </h4>
                 <div class="input-group input-group-merge invoice-edit-input-group">
                   <div class="input-group-text">
                     <i data-feather="hash"></i>
                   </div>
-                  <input type="text" class="form-control invoice-edit-input" placeholder="53634" />
+                  <input type="text" class="form-control invoice-edit-input" value="{{ $factura->folio }}"> 
                 </div>
               </div>
               <div class="d-flex align-items-center mb-1">
-                <span class="title">Fecha de Emisión: </span>
-                {{ Form::date('fecha_emision', $factura->fecha_emision, ['class' => 'form-control' . ($errors->has('fecha_emision') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Emision']) }}
-            {!! $errors->first('fecha_emision', '<div class="invalid-feedback">:message</div>') !!}              </div>
+                <span class="title">Fecha de Recepción:</span>
+                <input type="date" class="form-control invoice-edit-input date-picker" value="{{ $factura->fecha_emision }}"/>
+              </div>
               <div class="d-flex align-items-center">
-                <span class="title">Fecha de Recepción: </span>
-                {{ Form::date('fecha_reception', $factura->fecha_reception, ['class' => 'form-control' . ($errors->has('fecha_reception') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Reception']) }}
-            {!! $errors->first('fecha_reception', '<div class="invalid-feedback">:message</div>') !!}              </div>
+                <span class="title">Fecha de Recepción:</span>
+                <input type="date" class="form-control invoice-edit-input due-date-picker" value="{{ $factura->fecha_reception }}"/>
+              </div>
             </div>
           </div>
         </div>
@@ -105,16 +98,6 @@
         <hr class="invoice-spacing" />
 
         <!-- Address and Contact starts -->
-        <div class="card-body invoice-padding pt-0">
-          <div class="row row-bill-to invoice-spacing">
-            <div class="col-xl-8 mb-lg-1 col-bill-to ps-0">
-
-            </div>
-            <div class="col-xl-4 p-0 ps-xl-2 mt-xl-0 mt-2">
-              
-            </div>
-          </div>
-        </div>
         <!-- Address and Contact ends -->
 
         <!-- Product Details starts -->
@@ -133,13 +116,13 @@
                           <option value="ABC Template">ABC Template</option>
                           <option value="App Development">App Development</option>
                         </select>
-                        <textarea class="form-control mt-2" rows="1">Comentario opcional</textarea>
+                        <textarea class="form-control mt-2" rows="1">Comentario</textarea>
                       </div>
                       <div class="col-lg-3 col-12 my-lg-0 my-2">
-                        <p class="card-text col-title mb-md-2 mb-0">Precio Factura</p>
-                        <input type="text" class="form-control" value="24" placeholder="24" />
+                        <p class="card-text col-title mb-md-2 mb-0">Precio</p>
+                        <input type="number" class="form-control" value="24" placeholder="24" />
                         <div class="mt-2">
-                          <span>Discount:</span>
+                          <span>Descuento:</span>
                           <span class="discount">0%</span>
                           <span class="tax-1 ms-50" data-bs-toggle="tooltip" data-bs-placement="top" title="Tax 1"
                             >0%</span
@@ -175,19 +158,19 @@
                         <i
                           class="cursor-pointer more-options-dropdown me-0"
                           data-feather="settings"
-                          id="dropdownMenuButton"
                           role="button"
+                          id="dropdownMenuButton"
                           data-bs-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
                         >
                         </i>
                         <div
-                          class="dropdown-menu dropdown-menu-end item-options-menu p-50"
+                          class="dropdown-menu dropdown-menu-end item-options-menu p-1"
                           aria-labelledby="dropdownMenuButton"
                         >
                           <div class="mb-1">
-                            <label for="discount-input" class="form-label">Descuento(%)</label>
+                            <label for="discount-input" class="form-label">Discount(%)</label>
                             <input type="number" class="form-control" id="discount-input" />
                           </div>
                           <div class="form-row mt-50">
@@ -241,12 +224,12 @@
           <div class="row invoice-sales-total-wrapper">
             <div class="col-md-6 order-md-1 order-2 mt-md-0 mt-3">
               <div class="d-flex align-items-center mb-1">
-                <label for="salesperson" class="form-label">Salesperson:</label>
+                <label for="salesperson" class="form-label">Persona que recepciona:</label>
                 <input type="text" class="form-control ms-50" id="salesperson" placeholder="Edward Crowley" />
               </div>
             </div>
             <div class="col-md-6 d-flex justify-content-end order-md-2 order-1">
-              <table>
+            <table>
                 <tbody>
                     <tr>
                     <td class="pe-1">Subtotal:</td>
@@ -275,7 +258,7 @@
           <div class="row">
             <div class="col-12">
               <div class="mb-2">
-                <label for="note" class="form-label fw-bold">Note:</label>
+                <label for="note" class="form-label fw-bold">Nota:</label>
                 <textarea class="form-control" rows="2" id="note">
                   Comentario de la factura
                 </textarea>
@@ -286,72 +269,85 @@
         </div>
       </div>
     </div>
-    <!-- Invoice Add Left ends -->
+    <!-- Invoice Edit Left ends -->
 
-    <!-- Invoice Add Right starts -->
+    <!-- Invoice Edit Right starts -->
     <div class="col-xl-3 col-md-4 col-12">
       <div class="card">
         <div class="card-body">
-          <button class="btn btn-primary w-100 mb-75" disabled>Guardar</button>
+          <button class="btn btn-primary w-100 mb-75" data-bs-toggle="modal" data-bs-target="#send-invoice-sidebar">
+            Guardar
+          </button>
+          <a href="{{url('app/invoice/preview')}}" class="btn btn-outline-primary w-100 mb-75">Preview</a>
         </div>
       </div>
-      <div class="mt-2">
-
-    <!-- Invoice Add Right ends -->
+       </div>
+    </div>
+    <!-- Invoice Edit Right ends -->
   </div>
 
-  <!-- Add New Customer Sidebar -->
-  <div class="modal modal-slide-in fade" id="add-new-customer-sidebar" aria-hidden="true">
+  <!-- Send Invoice Sidebar -->
+  <div class="modal modal-slide-in fade" id="send-invoice-sidebar" aria-hidden="true">
     <div class="modal-dialog sidebar-lg">
       <div class="modal-content p-0">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×</button>
         <div class="modal-header mb-1">
           <h5 class="modal-title">
-            <span class="align-middle">Add Customer</span>
+            <span class="align-middle">Send Invoice</span>
           </h5>
         </div>
         <div class="modal-body flex-grow-1">
           <form>
             <div class="mb-1">
-              <label for="customer-name" class="form-label">Customer Name</label>
-              <input type="text" class="form-control" id="customer-name" placeholder="John Doe" />
-            </div>
-            <div class="mb-1">
-              <label for="customer-email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="customer-email" placeholder="example@domain.com" />
-            </div>
-            <div class="mb-1">
-              <label for="customer-address" class="form-label">Customer Address</label>
-              <textarea
+              <label for="invoice-from" class="form-label">From</label>
+              <input
+                type="text"
                 class="form-control"
-                id="customer-address"
-                cols="2"
-                rows="2"
-                placeholder="1307 Lady Bug Drive New York"
-              ></textarea>
-            </div>
-            <div class="mb-1 position-relative">
-              <label for="customer-country" class="form-label">Country</label>
-              <select class="form-select" id="customer-country" name="customer-country">
-                <option label="select country"></option>
-                <option value="Australia">Australia</option>
-                <option value="Canada">Canada</option>
-                <option value="Russia">Russia</option>
-                <option value="Saudi Arabia">Saudi Arabia</option>
-                <option value="Singapore">Singapore</option>
-                <option value="Sweden">Sweden</option>
-                <option value="Switzerland">Switzerland</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="United Arab Emirates">United Arab Emirates</option>
-                <option value="United States of America">United States of America</option>
-              </select>
+                id="invoice-from"
+                value="shelbyComapny@email.com"
+                placeholder="company@email.com"
+              />
             </div>
             <div class="mb-1">
-              <label for="customer-contact" class="form-label">Contact</label>
-              <input type="number" class="form-control" id="customer-contact" placeholder="763-242-9206" />
+              <label for="invoice-to" class="form-label">To</label>
+              <input
+                type="text"
+                class="form-control"
+                id="invoice-to"
+                value="qConsolidated@email.com"
+                placeholder="company@email.com"
+              />
+            </div>
+            <div class="mb-1">
+              <label for="invoice-subject" class="form-label">Subject</label>
+              <input
+                type="text"
+                class="form-control"
+                id="invoice-subject"
+                value="Invoice of purchased Admin Templates"
+                placeholder="Invoice regarding goods"
+              />
+            </div>
+            <div class="mb-1">
+              <label for="invoice-message" class="form-label">Message</label>
+              <textarea class="form-control" name="invoice-message" id="invoice-message" cols="3" rows="11">
+Dear Queen Consolidated,
+
+Thank you for your business, always a pleasure to work with you!
+
+We have generated a new invoice in the amount of $95.59
+
+We would appreciate payment of this invoice by 05/11/2019</textarea
+              >
+            </div>
+            <div class="mb-1">
+              <span class="badge badge-light-primary">
+                <i data-feather="link" class="me-25"></i>
+                <span class="align-middle">Invoice Attached</span>
+              </span>
             </div>
             <div class="mb-1 d-flex flex-wrap mt-2">
-              <button type="button" class="btn btn-primary me-1" data-bs-dismiss="modal">Add</button>
+              <button type="button" class="btn btn-primary me-1" data-bs-dismiss="modal">Send</button>
               <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
             </div>
           </form>
@@ -359,20 +355,64 @@
       </div>
     </div>
   </div>
-  <!-- /Add New Customer Sidebar -->
+  <!-- /Send Invoice Sidebar -->
+
+  <!-- Add Payment Sidebar -->
+  <div class="modal modal-slide-in fade" id="add-payment-sidebar" aria-hidden="true">
+    <div class="modal-dialog sidebar-lg">
+      <div class="modal-content p-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×</button>
+        <div class="modal-header mb-1">
+          <h5 class="modal-title">
+            <span class="align-middle">Add Payment</span>
+          </h5>
+        </div>
+        <div class="modal-body flex-grow-1">
+          <form>
+            <div class="mb-1">
+              <input id="balance" class="form-control" type="text" value="Invoice Balance: 5000.00" disabled />
+            </div>
+            <div class="mb-1">
+              <label class="form-label" for="amount">Payment Amount</label>
+              <input id="amount" class="form-control" type="number" placeholder="$1000" />
+            </div>
+            <div class="mb-1">
+              <label class="form-label" for="payment-date">Payment Date</label>
+              <input id="payment-date" class="form-control date-picker" type="text" />
+            </div>
+            <div class="mb-1">
+              <label class="form-label" for="payment-method">Payment Method</label>
+              <select class="form-select" id="payment-method">
+                <option value="" selected disabled>Select payment method</option>
+                <option value="Cash">Cash</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="Debit">Debit</option>
+                <option value="Credit">Credit</option>
+                <option value="Paypal">Paypal</option>
+              </select>
+            </div>
+            <div class="mb-1">
+              <label class="form-label" for="payment-note">Internal Payment Note</label>
+              <textarea class="form-control" id="payment-note" rows="5" placeholder="Internal Payment Note"></textarea>
+            </div>
+            <div class="d-flex flex-wrap mb-0">
+              <button type="button" class="btn btn-primary me-1" data-bs-dismiss="modal">Send</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Add Payment Sidebar -->
 </section>
 @endsection
 
 @section('vendor-script')
 <script src="{{asset('vendors/js/forms/repeater/jquery.repeater.min.js')}}"></script>
-<script src="{{asset('vendors/js/forms/select/select2.full.min.js')}}"></script>
 <script src="{{asset('vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>
 @endsection
 
 @section('page-script')
 <script src="{{asset('js/scripts/pages/app-invoice.js')}}"></script>
 @endsection
-
-    
-
-
