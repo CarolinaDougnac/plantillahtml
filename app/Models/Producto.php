@@ -74,7 +74,13 @@ class Producto extends Model
     {
         return $this->hasMany('App\Models\ProductoFactura', 'ProductoBasico_id_productoBasico', 'id');
     }
-    
+
+    // relacion Muchos a Muchos
+    public function muchasFacturas()
+    {
+        return $this->belongsToMany('App\Models\Factura')
+        ->withTimestamps();
+    } 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */

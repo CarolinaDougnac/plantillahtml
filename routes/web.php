@@ -34,8 +34,11 @@ Route::resource('proveedores', App\Http\Controllers\ProveedoreController::class)
 Route::resource('tiendas', App\Http\Controllers\TiendaController::class)->middleware('auth');
 Route::resource('compras', App\Http\Controllers\CompraController::class)->middleware('auth');
 
-Route::resource('ventadiaria', App\Http\Controllers\VentadiariaController::class)->middleware('auth');
-Route::resource('reposicion', App\Http\Controllers\TiendaController::class)->middleware('auth');
+Route::resource('ventadiarias', App\Http\Controllers\VentadiariaController::class)->middleware('auth');
+Route::resource('reposicions', App\Http\Controllers\TiendaController::class)->middleware('auth');
+Route::resource('facturaproducto', App\Http\Controllers\FacturaproductoController::class)->middleware('auth');
+
+
 
 Auth::routes();
 

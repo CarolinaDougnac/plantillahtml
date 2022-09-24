@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Estadofact $estadofact
  * @property Existencia[] $existencias
- * @property Productofactura[] $productofacturas
+ * @property Facturaproducto[] $facturaproducto
  * @property Proveedore $proveedore
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -66,6 +66,20 @@ class Factura extends Model
     {
         return $this->hasMany('App\Models\Productofactura', 'Factura_id_factura', 'id');
     }
+
+    // relacion Muchos a Muchos
+    public function muchosProductos()
+    {
+        return $this->belongsToMany('App\Models\Producto')
+        ->withTimestamps();
+        return $this->hasMany('App\Models\Facturaproducto', 'factura_id', 'id');
+
+    }
+    public function facturaproductos()
+    {
+        return $this->hasMany('App\Models\Producto','factura_id','id');
+    }
+
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

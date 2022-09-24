@@ -120,30 +120,16 @@
             </thead>
 
             <tbody>
+              @foreach($factura->muchosProductos as $producto)
               <tr>
-                <td class="py-1"><p class="card-text text-nowrap">Producto 1</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">junio 23</p></td>
+                <td class="py-1"><p class="card-text text-nowrap">{{ $producto->nombre }}</p></td>
+                <td class="py-1"><p class="card-text text-nowrap">{{ $producto->facturaproducto->vencimiento }}</p></td>
                 <td class="py-1"><p class="card-text text-nowrap">15</p></td>
                 <td class="py-1"><p class="card-text text-nowrap">$2.500</p></td>
                 <td class="py-1"><p class="card-text text-nowrap">$3.000</p></td>
                 <td class="py-1"><p class="card-text text-nowrap">$37.500</p></td>
               </tr>
-              <tr>
-                <td class="py-1"><p class="card-text text-nowrap">Producto 1</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">junio 23</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">15</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">$2.500</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">$3.000</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">$37.500</p></td>
-              </tr>
-              <tr>
-                <td class="py-1"><p class="card-text text-nowrap">Producto 1</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">junio 23</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">15</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">$2.500</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">$3.000</p></td>
-                <td class="py-1"><p class="card-text text-nowrap">$37.500</p></td>
-              </tr>
+              @endforeach
 
             </tbody>
           </table>
